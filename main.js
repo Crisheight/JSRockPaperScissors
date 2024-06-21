@@ -1,15 +1,18 @@
 function getComputerChoice(max) {
-    computerChoice = Math.floor(Math.random() * max);
+    let computerChoice = Math.floor(Math.random() * max);
     if (computerChoice === 0 ) {
-        return "rock";
+        console.log("rock");
+        return computerChoice;
     }
 
     else if (computerChoice === 1) {
-        return "paper";
+        console.log("paper");
+        return computerChoice;
     }
 
     else {
-        return "scissors";
+        console.log("scissors");
+        return computerChoice;
     }
 }
 
