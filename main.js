@@ -1,17 +1,17 @@
 function getComputerChoice(max) {
     let computerChoice = Math.floor(Math.random() * max);
     if (computerChoice === 0 ) {
-        console.log("The computer calculated rock");
+        console.log("\nThe computer calculated rock");
         return computerChoice;
     }
 
     else if (computerChoice === 1) {
-        console.log("The computer calculated paper");
+        console.log("\nThe computer calculated paper");
         return computerChoice;
     }
 
     else {
-        console.log("The computer calculated scissors");
+        console.log("\nThe computer calculated scissors");
         return computerChoice;
     }
 } // End getComputerChoice
@@ -44,8 +44,7 @@ function getUserChoice() {
     }
 } // End getUserChoice
 
-function keepScore(computerChoice, userChoice) {
-    let bothScores = [0,0];
+function keepScore(computerChoice, userChoice, bothScores) {
     console.log("User choice: " + userChoice);
     console.log("Computer choice: " + computerChoice)
 
@@ -55,22 +54,22 @@ function keepScore(computerChoice, userChoice) {
 
     else if (userChoice === 0 && computerChoice === 2) {
         console.log("You win!");
-        bothScores[0] = bothScores[0] + 1;
+        bothScores[0]++;
     }
 
     else if (userChoice === 1 && computerChoice === 0) {
         console.log("You win!");
-        bothScores[0] = bothScores[0] + 1;
+        bothScores[0]++;
     }
 
     else if (userChoice === 2 && computerChoice === 1) {
         console.log("You win!");
-        bothScores[0] = bothScores[0] + 1;
+        bothScores[0]++;
     }
 
     else {
         console.log("Computer wins!");
-        bothScores[1] = bothScores[1] + 1;
+        bothScores[1]++;
     }
 
     console.log("User score: " + bothScores[0]);
@@ -80,42 +79,27 @@ function keepScore(computerChoice, userChoice) {
 
 function runGame(n) {
     let i = 0;
-    let scoreTracker = [0,0];
+    let bothScores = [0,0];
     while (i < n) {
         let computerChoice = getComputerChoice(3);
         let userChoice = getUserChoice();
-        scoreTracker = scoreTracker + keepScore(computerChoice, userChoice);
+        bothScores = keepScore(computerChoice, userChoice, bothScores);
         i++;
     }
-    console.log("Final score: " + scoreTracker);
-} // End runGame
 
-runGame(5);
-
-
-function keepScore(user, computer) {
-    if (user === computer) {
-        console.log("It's a tie!");
+    if (bothScores[0] > bothScores[1]) {
+        console.log("\nYou win the game!");
     }
 
-    else if (user === 0 && computer === 2) {
-        console.log("You win!");
-    }
-
-    else if (user === 1 && computer === 0) {
-        console.log("You win!");
-    }
-
-    else if (user === 2 && computer === 1) {
-        console.log("You win!");
+    else if (bothScores[0] < bothScores[1]) {
+            console.log("\nThe computer wins the game!");
     }
 
     else {
-        console.log("You lose!");
+            console.log("\nThe game is a tie!");
     }
-} // End keepScore
+} // End runGame
 
-keepScore(getUserChoice(), getComputerChoice(3));
-
+runGame(5);
 
 
